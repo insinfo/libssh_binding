@@ -1,5 +1,7 @@
 ### Dart Binding to libssh version 0.9.6
 
+binding and high-level wrapper on top of libssh - The SSH library! libssh is a multiplatform C library implementing the SSHv2 protocol on client and server side. With libssh, you can remotely execute programs, transfer files, use a secure and transparent tunnel https://www.libssh.org
+
 ##### example of low level
 
 ```dart
