@@ -1,0 +1,9 @@
+prefix=${pcfiledir}/../..
+Name: libssh
+Description: The SSH Library
+Version: 0.9.5
+Libs: -L"${prefix}/lib" -lssh
+Cflags: -I"${prefix}/include"
+
+Requires:
+Libs.private: -lmbedcrypto -lpthreadVC3 -lws2_32 -lShell32 -lAdvapi32

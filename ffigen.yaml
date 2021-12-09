@@ -1,0 +1,15 @@
+name: 'Pscp'
+description: 'Bindings to Pscp'
+output: 'pscp.dart'
+llvm-path:     
+  - 'C:\Program Files\llvm'      
+headers:
+  entry-points:
+    #- 'libssh/include/libssh/sftp.h'     
+    - 'extra/pscp.h' 
+  #include-directives:
+    #- '**sftp.h'
+    #- 'libssh/include/libssh/**'
+    #- 'libssh/src/**'
+#compiler-opts:
+  #- '-Ilibssh/'

@@ -1,0 +1,4 @@
+D:\MyDartProjects\fsbackup\libssh_binding\libssh_c_wrapper\x64\Release\libssh_wrapper.vcxproj.CopyComplete
+D:\MyDartProjects\fsbackup\libssh_binding\libssh_c_wrapper\x64\Release\libssh_wrapper.exe
+D:\MyDartProjects\fsbackup\libssh_binding\libssh_c_wrapper\x64\Release\ssh.dll
+D:\MyDartProjects\fsbackup\libssh_binding\libssh_c_wrapper\x64\Release\pthreadVC3.dll

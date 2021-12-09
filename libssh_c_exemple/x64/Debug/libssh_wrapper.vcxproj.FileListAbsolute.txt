@@ -1,0 +1,4 @@
+D:\MyDartProjects\fsbackup\libssh_wrapper\libssh_wrapper\x64\Debug\libssh_wrapper.exe
+D:\MyDartProjects\fsbackup\libssh_wrapper\libssh_wrapper\x64\Debug\libssh_wrapper.vcxproj.CopyComplete
+D:\MyDartProjects\fsbackup\libssh_wrapper\libssh_wrapper\x64\Debug\ssh.dll
+D:\MyDartProjects\fsbackup\libssh_wrapper\libssh_wrapper\x64\Debug\pthreadVC3d.dll
