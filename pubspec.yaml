@@ -1,7 +1,7 @@
 name: libssh_binding
 description: binding and high-level wrapper on top of libssh - The SSH library! libssh is a multiplatform C library implementing the SSHv2 protocol on client and server side. With libssh, you can remotely execute programs, transfer files, use a secure and transparent tunnel https://www.libssh.org
 #publish_to: 'none' 
-version: 1.0.0+1
+version: 1.0.0
 home: https://github.com/insinfo/libssh_binding
 
 environment:
