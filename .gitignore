@@ -67,6 +67,7 @@ download/
 libssh/
 libssh_c_exemple/
 libssh_compiled/
+extra/
 putty/
 winscp.bat
 pubspec.lock
