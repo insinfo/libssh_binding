@@ -22,6 +22,35 @@ ldconfig -p | grep libssh
 libssh.so.4
 ```
 
+##### example of high level on Ubuntu 20
+
+
+```dart
+void main() async {
+  var libraryPath = path.join('/lib/x86_64-linux-gnu/', 'libssh.so.4');
+  print('libraryPath $libraryPath');
+  final dll = DynamicLibrary.open(libraryPath);
+
+  final libssh = LibsshWrapper('192.168.3.4',
+      inDll: dll,
+      username: 'isaque',
+      password: 'Ins257257',
+      port: 22,
+      verbosity: true);
+  libssh.connect();
+  final start = DateTime.now();
+
+ 
+  await libssh.scpDownloadDirectory('/var/www/html/portalPmro',
+      path.join(Directory.current.path, 'download'));
+  
+  print('\r\n${DateTime.now().difference(start)}');
+  libssh.dispose();
+  exit(0);
+}
+
+```
+
 ##### example of low level on Windows
 
 ```dart
@@ -143,34 +172,7 @@ git filter-branch -f --tree-filter 'rm -f /path/to/file' HEAD --all
  perf report --no-children -i perf.data
 -->
 
-##### example of high level on Ubuntu 20
 
-
-```dart
-void main() async {
-  var libraryPath = path.join('/lib/x86_64-linux-gnu/', 'libssh.so.4');
-  print('libraryPath $libraryPath');
-  final dll = DynamicLibrary.open(libraryPath);
-
-  final libssh = LibsshWrapper('192.168.3.4',
-      inDll: dll,
-      username: 'isaque',
-      password: 'Ins257257',
-      port: 22,
-      verbosity: true);
-  libssh.connect();
-  final start = DateTime.now();
-
- 
-  await libssh.scpDownloadDirectory('/var/www/html/portalPmro',
-      path.join(Directory.current.path, 'download'));
-  
-  print('\r\n${DateTime.now().difference(start)}');
-  libssh.dispose();
-  exit(0);
-}
-
-```
 
 if you want to compile libssh for android see this link [Compiling libssh for Android](https://egorovandreyrm.com/compiling-libssh-for-android-with-boringssl/)
 if you need it for ios see this link [libssh2 for ios,](https://github.com/Frugghi/iSSH2) it's not for libssh, it's for libssh2 but possibly the hints should be for libssh too
