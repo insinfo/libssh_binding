@@ -34,7 +34,7 @@ void main() async {
   final libssh = LibsshWrapper('192.168.3.4',
       inDll: dll,
       username: 'isaque',
-      password: 'Ins257257',
+      password: 'pass',
       port: 22,
       verbosity: true);
   libssh.connect();
