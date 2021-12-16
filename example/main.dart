@@ -1,11 +1,20 @@
+import 'dart:ffi';
 import 'dart:io';
 
 import 'package:libssh_binding/libssh_binding.dart';
 import 'package:path/path.dart' as path;
 
 void main() async {
-  final libssh = LibsshWrapper('localhost',
-      username: 'user', password: 'pass', port: 22, verbosity: false);
+  var libraryPath = path.join('/lib/x86_64-linux-gnu/', 'libssh.so.4');
+  print('libraryPath $libraryPath');
+  final dll = DynamicLibrary.open(libraryPath);
+
+  final libssh = LibsshWrapper('192.168.3.4',
+      inDll: dll,
+      username: 'isaque',
+      password: 'Ins257257',
+      port: 22,
+      verbosity: true);
   libssh.connect();
   final start = DateTime.now();
 

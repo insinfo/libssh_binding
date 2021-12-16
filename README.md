@@ -2,6 +2,26 @@
 
 binding and high-level wrapper on top of libssh - The SSH library! libssh is a multiplatform C library implementing the SSHv2 protocol on client and server side. With libssh, you can remotely execute programs, transfer files, use a secure and transparent tunnel https://www.libssh.org
 
+##### linux (Debin/Ubuntu)
+
+```
+# install dart 2.14
+sudo apt-get update
+sudo apt-get install apt-transport-https
+sudo sh -c 'wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -'
+sudo sh -c 'wget -qO- https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_stable.list > /etc/apt/sources.list.d/dart_stable.list'
+sudo apt-get update
+sudo apt-get install dart=2.14*
+
+# install libssh
+sudo apt show libssh-4
+sudo apt install libssh-4
+# check
+ldconfig -p | grep libssh
+/lib/x86_64-linux-gnu/libssh.so.4
+libssh.so.4
+```
+
 ##### example of low level
 
 ```dart
@@ -122,4 +142,57 @@ git filter-branch -f --tree-filter 'rm -f /path/to/file' HEAD --all
 
  perf report --no-children -i perf.data
 -->
+
+@jmnicolas90 
+you have to install libssh, and pass the path, see the example below, tested on Ubuntu 20
+
+##### linux (Debin/Ubuntu)
+
+```console
+# install dart 2.14
+sudo apt-get update
+sudo apt-get install apt-transport-https
+sudo sh -c 'wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -'
+sudo sh -c 'wget -qO- https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_stable.list > /etc/apt/sources.list.d/dart_stable.list'
+sudo apt-get update
+sudo apt-get install dart=2.14*
+
+# install libssh
+sudo apt show libssh-4
+sudo apt install libssh-4
+# check
+ldconfig -p | grep libssh
+/lib/x86_64-linux-gnu/libssh.so.4
+libssh.so.4
+```
+
+
+```dart
+void main() async {
+  var libraryPath = path.join('/lib/x86_64-linux-gnu/', 'libssh.so.4');
+  print('libraryPath $libraryPath');
+  final dll = DynamicLibrary.open(libraryPath);
+
+  final libssh = LibsshWrapper('192.168.3.4',
+      inDll: dll,
+      username: 'isaque',
+      password: 'Ins257257',
+      port: 22,
+      verbosity: true);
+  libssh.connect();
+  final start = DateTime.now();
+
+ 
+  await libssh.scpDownloadDirectory('/var/www/html/portalPmro',
+      path.join(Directory.current.path, 'download'));
+  
+  print('\r\n${DateTime.now().difference(start)}');
+  libssh.dispose();
+  exit(0);
+}
+
+```
+
+if you want to compile libssh for android see this link [Compiling libssh for Android](https://egorovandreyrm.com/compiling-libssh-for-android-with-boringssl/)
+if you need it for ios see this link [libssh2 for ios,](https://github.com/Frugghi/iSSH2) it's not for libssh, it's for libssh2 but possibly the hints should be for libssh too
 
