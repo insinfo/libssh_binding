@@ -22,7 +22,7 @@ ldconfig -p | grep libssh
 libssh.so.4
 ```
 
-##### example of low level
+##### example of low level on Windows
 
 ```dart
 import 'dart:io';
@@ -87,7 +87,7 @@ void main() async {
 }
 
 ```
-##### example of high level
+##### example of high level on Windows
 
 ```dart
 import 'package:libssh_binding/libssh_binding.dart';
