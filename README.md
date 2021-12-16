@@ -143,28 +143,7 @@ git filter-branch -f --tree-filter 'rm -f /path/to/file' HEAD --all
  perf report --no-children -i perf.data
 -->
 
-@jmnicolas90 
-you have to install libssh, and pass the path, see the example below, tested on Ubuntu 20
-
-##### linux (Debin/Ubuntu)
-
-```console
-# install dart 2.14
-sudo apt-get update
-sudo apt-get install apt-transport-https
-sudo sh -c 'wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -'
-sudo sh -c 'wget -qO- https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_stable.list > /etc/apt/sources.list.d/dart_stable.list'
-sudo apt-get update
-sudo apt-get install dart=2.14*
-
-# install libssh
-sudo apt show libssh-4
-sudo apt install libssh-4
-# check
-ldconfig -p | grep libssh
-/lib/x86_64-linux-gnu/libssh.so.4
-libssh.so.4
-```
+##### example of high level on Ubuntu 20
 
 
 ```dart
